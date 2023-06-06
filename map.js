@@ -143,12 +143,24 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
-const book = getBook(1);
-book;
-const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
-  book;
+const books = getBooks();
+books;
 
-const summary = `${title}, a ${pages}-page long book was written by ${author} and published in ${
-  publicationDate.split('-')[0]
-} `;
-summary;
+const x = [1, 2, 3, 4, 5, 6].map((el) => el * 2);
+console.log(x);
+
+const titles = books.map((book) => book.title);
+console.log(titles);
+
+function getTotalReviewCount(book) {
+  const goodreads = book.reviews?.goodreads?.reviewsCount ?? 0;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+  return goodreads + librarything;
+}
+
+const essentialData = books.map((book) => ({
+  title: book.title,
+  author: book.author,
+  reviewsCount: getTotalReviewCount(book),
+}));
+console.log(essentialData);

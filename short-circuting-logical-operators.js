@@ -143,12 +143,30 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
-const book = getBook(1);
+const book = getBook(2);
 book;
 const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
   book;
 
-const summary = `${title}, a ${pages}-page long book was written by ${author} and published in ${
-  publicationDate.split('-')[0]
-} `;
-summary;
+// And &&
+console.log(true && 'Some String');
+console.log(false && 'Some String');
+console.log(hasMovieAdaptation && 'This book has a movie');
+
+// Or ||
+console.log(true || 'Some String');
+console.log(false || 'Some String');
+console.log(book.translations.spanish);
+
+const spanishTranslation =
+  book.translations.spanish || 'NO SPANISH translations';
+console.log(spanishTranslation);
+
+// Issue with OR
+console.log(book.reviews.librarything.reviewsCount);
+const countWrong = book.reviews.librarything.reviewsCount || 'no data';
+console.log(countWrong);
+
+// nullish
+const count = book.reviews.librarything.reviewsCount ?? 'no data';
+console.log(count);

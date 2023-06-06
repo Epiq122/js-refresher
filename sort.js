@@ -143,12 +143,20 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
-const book = getBook(1);
-book;
-const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
-  book;
+const books = getBooks();
+books;
 
-const summary = `${title}, a ${pages}-page long book was written by ${author} and published in ${
-  publicationDate.split('-')[0]
-} `;
-summary;
+// actually mutates the array
+const x = [3, 11, 17, 8, 6, 1];
+const sorted = x.sort((a, b) => a - b);
+
+console.log(x);
+
+// workaround
+const y = [1, 8, 0, 11, 3];
+const otherSorted = y.slice().sort((a, b) => b - a);
+console.log(y);
+console.log(otherSorted);
+
+const sortedByPages = books.slice().sort((a, b) => b.pages - a.pages);
+console.log(sortedByPages);

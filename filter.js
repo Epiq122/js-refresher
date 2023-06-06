@@ -143,12 +143,15 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
-const book = getBook(1);
-book;
-const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
-  book;
+const books = getBooks();
+books;
 
-const summary = `${title}, a ${pages}-page long book was written by ${author} and published in ${
-  publicationDate.split('-')[0]
-} `;
-summary;
+const longBooksWithMovie = books
+  .filter((book) => book.pages > 500)
+  .filter((book) => book.hasMovieAdaptation);
+console.log(longBooksWithMovie);
+
+const adventureBooks = books
+  .filter((books) => books.genres.includes('adventure'))
+  .map((book) => book.title);
+console.log(adventureBooks);

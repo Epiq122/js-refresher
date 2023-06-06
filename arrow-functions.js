@@ -148,7 +148,12 @@ book;
 const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
   book;
 
-const summary = `${title}, a ${pages}-page long book was written by ${author} and published in ${
-  publicationDate.split('-')[0]
-} `;
-summary;
+const getYear = (str) => str.split('-')[0];
+
+const pagesRange = pages > 1000 ? 'over 1000' : 'less than 1000';
+console.log(`The book has ${pagesRange} pages`);
+
+const summary = `${title}, a ${pages}-page long book was written by ${author} and published in ${getYear(
+  publicationDate,
+)}. The book has ${hasMovieAdaptation ? '' : 'not'} been adapted as a movie `;
+console.log(summary);

@@ -143,12 +143,10 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
-const book = getBook(1);
-book;
-const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
-  book;
+const books = getBooks();
+books;
 
-const summary = `${title}, a ${pages}-page long book was written by ${author} and published in ${
-  publicationDate.split('-')[0]
-} `;
-summary;
+// The most powerful method
+
+const pagesAllBooks = books.reduce((sum, book) => sum + book.pages, 0);
+console.log(pagesAllBooks);
